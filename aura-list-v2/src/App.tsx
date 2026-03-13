@@ -58,7 +58,9 @@ function App() {
                 <input type="text" value={editName} onChange={(e) => setEditName(e.currentTarget.value)}  name="task-edit-input" id="task-edit-input" className="modal-edit__input"/>
             </div>
             <div className="modal-edit__actions">
-                <button className="modal-edit__button--update modal-edit__button">Atualizar</button>
+                <button className="modal-edit__button--update modal-edit__button" onClick={() =>{
+                  setTasks(() => tasks.map(task => task.id === taskId ? {...task, name: editName} : task))
+                }}>Atualizar</button>
                 <button className="modal-edit__button--cancel modal-edit__button" onClick={() => setModal(e => !e)}>Cancelar</button>
             </div> </>}
 
