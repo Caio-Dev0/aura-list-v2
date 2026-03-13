@@ -55,7 +55,7 @@ function App() {
 
     {modal && <> <div className="modal-edit__content">
                 <label htmlFor="task-edit-input" className="modal-edit__label">Edite sua tarefa</label>
-                <input type="text" name="task-edit-input" id="task-edit-input" className="modal-edit__input"/>
+                <input type="text" value={editName} onChange={(e) => setEditName(e.currentTarget.value)}  name="task-edit-input" id="task-edit-input" className="modal-edit__input"/>
             </div>
             <div className="modal-edit__actions">
                 <button className="modal-edit__button--update modal-edit__button">Atualizar</button>
