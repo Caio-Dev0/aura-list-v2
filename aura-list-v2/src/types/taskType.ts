@@ -4,3 +4,9 @@ export interface Task{
   difficulty: "easy" | "medium" | "hard"
 }
 
+export const difficultyWeight = {
+  hard: 3,
+  medium: 2,
+  easy: 1
+} as const
+

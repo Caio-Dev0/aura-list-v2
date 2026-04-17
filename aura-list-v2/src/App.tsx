@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import type { Task } from './types/taskType'
 import RenderTasks from './components/RenderTasks'
 import FormTask from './components/FormTask'
+import { difficultyWeight } from './types/taskType'
 
 function App() {
   const [nameTask, setNameTask] = useState<string>("")
@@ -11,12 +12,17 @@ function App() {
   const [taskEdit, setTaskEdit] = useState<Task | null> (null)
   const [taskDifficulty, setTaskDifficulty] = useState<"easy" | "medium" | "hard">("easy")
 
+  useEffect(() =>{
+    console.log(tasks)
+  }, [tasks])
+
+
   function handleSubmitForm(e: React.SubmitEvent): void{
     e.preventDefault()
     if(nameTask === ""){
       return
     }
-    setTasks(e => [...e, {id: tasks.length + 1, name: nameTask, difficulty: taskDifficulty}])
+    setTasks(e => [...e, {id: tasks.length + 1, name: nameTask, difficulty: taskDifficulty}].sort((a, b) => difficultyWeight[b.difficulty] - difficultyWeight[a.difficulty]))
     setNameTask("")
     console.log(taskDifficulty)
   }
