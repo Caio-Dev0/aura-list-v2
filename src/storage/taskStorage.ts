@@ -8,7 +8,7 @@ export function saveLocalStorage(name: string, item: Task[]){
 export function getLocalStorage(name: string){
     const itemStorage = localStorage.getItem(name)
     if(itemStorage){
-        return JSON.parse(itemStorage)
+        return JSON.parse(itemStorage) as Task[]
     }
     return []
 }
