@@ -2,10 +2,7 @@ import type { Task } from "../types/taskType"
 
     export default function RenderTasks({tasks, handleDeleteTask, modal, handleEditTask, editTask, handleChangeTask, handleUpdateTasks, handleCloseModal}: {tasks: Task[], handleDeleteTask(id: number): void, modal: boolean, handleEditTask(taskId: number, editName: string, difficulty: string): void, editTask: Task,  handleChangeTask(editName: string): void, handleUpdateTasks(tasks: Task[]): void, handleCloseModal(): void}){
         return(
-        <>    
-        <header>
-            <h1>Aplicação Tarefas</h1>
-        </header>
+        <>        
         <ul>
  
         {tasks.map(a => {
