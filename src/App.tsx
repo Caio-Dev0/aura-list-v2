@@ -1,4 +1,4 @@
-import './App.css'
+import './globals.css'
 import RenderTasks from './components/RenderTasks'
 import FormTask from './components/FormTask'
 import { useTasks } from './hooks/useTasks'
