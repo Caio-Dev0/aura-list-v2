@@ -32,7 +32,6 @@ export function useTasks(){
       function handleEditTask(idTask: string, nameTask: string, difficulty: Difficulty): void{
         setTaskEdit({id: idTask, name: nameTask, difficulty: difficulty})
         setModal(true)
-        console.log(difficulty)
       }
     
       function handleChangeTask(nameTask: string, difficulty: Difficulty): void{
