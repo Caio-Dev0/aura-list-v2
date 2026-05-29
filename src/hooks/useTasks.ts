@@ -32,7 +32,7 @@ export function useTasks(handleCreateToast: (toast: Toast) => void){
 
       function handleSubmitForm(): void{
         if(nameTask === ""){
-          handleCreateToast({id: crypto.randomUUID(), message: "Não pode enviar", type: "error"})
+          handleCreateToast({id: crypto.randomUUID(), message: "Adicione um nome para a tarefa", type: "error"})
           return
         }
         setTasks(e => [...e, {id: crypto.randomUUID(), name: nameTask, difficulty: taskDifficulty, completed: false}].sort((a, b) => difficultyWeight[b.difficulty] - difficultyWeight[a.difficulty]))
@@ -54,6 +54,10 @@ export function useTasks(handleCreateToast: (toast: Toast) => void){
       }
       
       function handleUpdateTasks(){
+        if(taskEdit?.name === ""){
+          handleCreateToast({id: crypto.randomUUID(), message: "O nome da tarefa não pode ser vazio", type: "error"})
+          return
+        }
         setTasks(tasks.map(task => task.id === taskEdit!.id ? {...task, name: taskEdit!.name, difficulty: taskEdit!.difficulty} : task).sort((a, b) => difficultyWeight[b.difficulty] - difficultyWeight[a.difficulty]))
         setModal(false)
       }
