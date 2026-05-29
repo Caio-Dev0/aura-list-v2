@@ -20,9 +20,9 @@ export function useTasks(handleCreateToast: (toast: Toast) => void){
     }else if(activeFilter === "easy" || activeFilter === "medium" || activeFilter === "hard"){
       filteredTasks = tasks.filter(task => task.difficulty === activeFilter)
     }else if(activeFilter === "completed"){
-      filteredTasks = tasks.filter(task => !task.completed)
-    }else if(activeFilter === "pending"){
       filteredTasks = tasks.filter(task => task.completed)
+    }else if(activeFilter === "pending"){
+      filteredTasks = tasks.filter(task => !task.completed)
     }
 
     useEffect(() =>{
