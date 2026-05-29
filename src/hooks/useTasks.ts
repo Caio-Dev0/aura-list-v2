@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 import type { Task, Difficulty, Filter } from "../types/taskType"
 import { difficultyWeight } from "../types/taskType"
 import { saveLocalStorage, getLocalStorage } from "../storage/taskStorage"
+import type { Toast } from "../types/toastType"
 
 
-export function useTasks(){
+export function useTasks(handleCreateToast: (toast: Toast) => void){
     const [nameTask, setNameTask] = useState<string>("")
     const [tasks, setTasks] = useState<Task[]>(getLocalStorage("tasks"))
     const [modal, setModal] =useState<boolean>(false)
@@ -31,6 +32,7 @@ export function useTasks(){
 
       function handleSubmitForm(): void{
         if(nameTask === ""){
+          handleCreateToast({id: crypto.randomUUID(), message: "Não pode enviar", type: "error"})
           return
         }
         setTasks(e => [...e, {id: crypto.randomUUID(), name: nameTask, difficulty: taskDifficulty, completed: false}].sort((a, b) => difficultyWeight[b.difficulty] - difficultyWeight[a.difficulty]))
